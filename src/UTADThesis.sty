@@ -1,0 +1,431 @@
+%------------------------------------------------------------------------------------------
+% Modelo de Dissertação de Mestrado da UTAD
+% Raul Morais, António Valente, Salviano Soares, Manuel Cabral
+%------------------------------------------------------------------------------------------
+\typeout{Modelo de Documento de Relatório de estágio de Mestrado da UTAD}
+%----------------------------------------------------------------------------------------
+% Define new headings
+%----------------------------------------------------------------------------------------
+% Adicionado por Antonio Valente em 02/2018
+\RequirePackage[many]{tcolorbox}
+\newcommand{\properpagestyle}{    \pagestyle{fancy}    }
+\renewcommand{\chaptermark}[1]%
+   {\markboth{\thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]%
+   {\markright{\thesection.\ #1}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+\newcommand{\helv}{%
+   \fontfamily{cmss}\fontseries{bx}\fontshape{n}\fontsize{9}{11}\selectfont}
+\fancyhf{}
+\fancyhead[LE,RO]{\helv \thepage}
+\fancyhead[LO]{\helv \rightmark}
+\fancyhead[RE]{\helv \leftmark}
+
+% First thing we do is make sure that report has been loaded.  A
+% common error is to try to use suthesis as a documentstyle.
+\@ifundefined{chapter}{\@latexerr{The `dalthesis' option should be used
+with the `report' document style}{You should probably read the
+dalthesis documentation.}}{}
+
+\brokenpenalty=10000
+
+\renewcommand{\baselinestretch}{1.35}
+\setlength{\unitlength}{1mm}
+
+\voffset -1in%
+\hoffset -1in%
+
+\setlength{\textheight}{21.5cm} %
+\setlength{\textwidth}{15cm}%
+\setlength{\paperheight}{29.7cm} %
+\setlength{\paperwidth}{21cm}%
+
+\topmargin 1.5cm%
+\headheight 1cm%
+\headsep 1.5cm%
+%\topskip  0.5cm
+
+\footskip   1.0cm
+\oddsidemargin 4.00cm %3.35cm%
+\evensidemargin 2.00cm %1.35cm%
+
+% Disallow page breaks at hyphens (this will give some underfull vbox's,
+% so an alternative is to use \brokenpenalty=100 and manually search
+% for and fix such page breaks)
+\brokenpenalty=10000
+
+% Redefine the macro used for footnotes to use single spacing
+\long\def\@footnotetext#1{\insert\footins{\def\baselinestretch{1}\footnotesize
+    \interlinepenalty\interfootnotelinepenalty
+    \splittopskip\footnotesep
+    \splitmaxdepth \dp\strutbox \floatingpenalty \@MM
+    \hsize\columnwidth \@parboxrestore
+    \edef\@currentlabel{\csname p@footnote\endcsname\@thefnmark}\@makefntext
+    {\rule{\z@}{\footnotesep}\ignorespaces
+      #1\strut}}}
+
+%---------------------------------------------------------------------------------
+% \author, \title are defined in report; here are the rest of the
+% front matter defining macros
+%---------------------------------------------------------------------------------
+
+\def\university#1{\gdef\@university{#1}}
+\def\address#1{\gdef\@address{#1}}
+\def\dept#1{\gdef\@dept{#1}}
+\def\presidentejuri#1{\gdef\@presidentejuri{#1}}
+\def\arguenteexterno#1{\gdef\@arguenteexterno{#1}}
+\def\submitdate#1{\gdef\@submitdate{#1}}
+\def\copyrightyear#1{\gdef\@copyrightyear{#1}} % \author, \title in report
+\def\degree#1{\gdef\@degree{#1}}
+\def\degreeinitial#1{\gdef\@degreeinitial{#1}}
+\def\doctype#1{\gdef\@doctype{#1}}
+\def\msc{\degree{Mestre}\degreeinitial{M.Sc.}\doctype{Relatório de estágio}}
+\def\phd{\degree{Doutor}\degreeinitial{Ph.D.}\doctype{Tese}} % was [\ph@dtrue]
+
+
+
+\def\orientador#1{\gdef\@orientador{#1}}
+\def\grauorientador#1{\gdef\@grauorientador{#1}}
+\def\deporientador#1{\gdef\@deporientador{#1}}
+\def\instorientador#1{\gdef\@instorientador{#1}}
+
+\def\coorientador#1{\gdef\@coorientador{#1}\co@orientadortrue}
+\def\graucoorientador#1{\gdef\@graucoorientador{#1}}
+\def\depcoorientador#1{\gdef\@depcoorientador{#1}}
+\def\instcoorientador#1{\gdef\@instcoorientador{#1}}
+
+\def\acompanhante#1{\gdef\@acompanhante{#1}\acomp@nhantetrue}
+\def\grauacompanhante#1{\gdef\@grauacompanhante{#1}}
+\def\depacompanhante#1{\gdef\@depacompanhante{#1}}
+\def\instacompanhante#1{\gdef\@instacompanhante{#1}}
+
+\def\designacaopresidente#1{\gdef\@designacaopresidente{#1}}
+\def\designacaoarguente#1{\gdef\@designacaoarguente{#1}}
+
+
+\def\@title{}
+\def\@author{}
+\def\@university{Universidade de Trás-os-Montes e Alto Douro}
+\def\@address{Quinta de Prados, Vila Real}
+\def\@dept{Engenharias}
+
+\def\@submitdate{\ifcase\the\month\or
+  janeiro\or fevereiro\or março\or abril\or maio\or junho\or
+  julho\or agosto\or setembro\or outubro\or novembro\or dezembro\fi
+  \space \number\the\year}
+\def\@copyrightyear{\number\the\year}
+
+\def\convocation#1#2{\gdef\@convocationmonth{#1}\gdef\@convocationyear{#2}}
+\def\@convwarn{\typeout{Warning!  Convocation date may be incorrect!}}
+\ifnum\month<5
+   \def\@convocationmonth{May}
+   \def\@convocationyear{\number\the\year\@convwarn}
+\else\ifnum\month<10
+   \def\@convocationmonth{October}
+   \def\@convocationyear{\number\the\year\@convwarn}
+\else
+   \def\@convocationmonth{February}
+   \@tempcnta=\year  \advance\@tempcnta by 1
+   \def\@convocationyear{\number\the\@tempcnta\@convwarn}
+\fi\fi
+
+\def\dedicate#1{\dedic@tiontrue\gdef\dedication@text{#1}}
+
+\def\draft{\renewcommand{\properpagestyle}{\pagestyle{myheadings}
+\markright{{\rm Draft Version -- \today}}}\draft@modetrue\properpagestyle}
+\def\nobib{\print@bibfalse}
+\def\nolistoffigures{\figurespagefalse}
+\def\nolistoftables{\tablespagefalse}
+\def\nojuri{\front@pagesfalse\permissionfalse\figurespagefalse\tablespagefalse}
+
+
+% New if constructs:    Default conditions:
+\newif\ifacomp@nhante  \acomp@nhantefalse
+\newif\ifpermission     \permissiontrue
+\newif\iffigurespage    \figurespagetrue
+\newif\iftablespage     \tablespagetrue
+\newif\iffront@pages    \front@pagestrue
+\newif\ifco@orientador   \co@orientadorfalse
+\newif\ifdraft@mode     \draft@modefalse
+\newif\ifprint@bib      \print@bibtrue
+\newif\ifdedic@tion     \dedic@tionfalse
+%\newif\ifph@d			\pd@dfalse
+
+\def\no@breaks#1{{\def\\{ \ignorespaces}#1}}    % disallow explicit line breaks
+
+%-----------------------------------------------------------------------------------------------
+% Folhas de Título (Capa e Contracapa)
+%-----------------------------------------------------------------------------------------------
+\def\titlep{
+    \thispagestyle{empty}%
+    \ifdraft@mode
+        \begin{center} \Large DRAFT COPY\\ \large Printed \today \end{center}
+    \fi
+    \null\vskip0.5in
+
+    \begin{center}
+        \hyphenpenalty=10000\Large\bf\expandafter{\@title}
+    \end{center}
+    \vfill
+    \begin{center}
+        \large\rm Por\\
+        \@author \\[10mm]
+        %remover da Versão final
+           \bigskip
+           
+        \textbf{Orientador: }\@orientador\\
+        \textbf{Co-orientador: }\@coorientador\\
+    \end{center}
+    \vfill
+    \begin{center}
+        \footnotesize\expandafter{\@doctype} submetido à\\
+        \uppercase\expandafter{\@university} \\
+        para obtenção do grau de \\
+        \uppercase\expandafter{\@degree} \\
+        em Engenharia Informática, de acordo com o disposto no \\
+        DR -- I série--A, Decreto-Lei n.º 74/2006 de 24 de Março e no\\
+        Regulamento de Estudos Pós-Graduados da UTAD \\
+        DR, 2.ª série -- Deliberação n.º 2391/2007
+    \end{center}
+    \vskip0.75in
+
+    \newpage
+    \thispagestyle{empty} \rule[-2mm]{0mm}{20mm}
+
+    \cleardoublepage
+
+    \thispagestyle{empty}%
+    \ifdraft@mode
+      \begin{center} \Large DRAFT COPY\\ \large Printed \today \end{center}
+    \fi
+    \null\vskip0.5in
+    \begin{center}
+        \hyphenpenalty=10000\Large\bf\expandafter{\@title}
+    \end{center}
+    \vfill
+    \begin{center}
+        \large\rm Por\\
+        \@author \\[10mm]
+                %remover da Versão final
+            
+            \bigskip
+    \textbf{Orientador: }\@orientador\\
+    \textbf{Co-orientador: }\@coorientador\\
+
+    \end{center}
+    \vfill
+
+
+    \begin{center}
+        \footnotesize Relatório de estágio submetido à\\
+       \uppercase\expandafter{\@university} \\
+       para obtenção do grau de \\
+        \uppercase\expandafter{\@degree} \\
+        em Engenharia Informática, de acordo com o disposto no \\
+        DR -- I série--A, Decreto-Lei n.º 74/2006 de 24 de Março e no\\
+        Regulamento de Estudos Pós-Graduados da UTAD \\
+        DR, 2.ª série -- Deliberação n.º 2391/2007
+    \end{center}
+    \vskip0.75in
+    \cleardoublepage
+    }
+
+%-----------------------------------------------------------------------------------------------
+% Folha com os elementos de orientação, acompanhamento do trabalho, folha de Júri e Dedicatória
+%-----------------------------------------------------------------------------------------------
+\def\beforepreface{
+    \pagenumbering{roman}
+    \pagestyle{plain}
+    \titlep
+    \cleardoublepage
+    \begin{center}
+        \vskip3cm
+        \begin{small}
+
+        \emph{Orientação Científica :} \\
+        \vskip1.5cm
+
+        \textbf{\@orientador} \\
+        \vskip0.3cm
+        \footnotesize {\@grauorientador}  do \\
+        \footnotesize \@deporientador \\
+        \footnotesize \@instorientador \\
+
+        \vskip1.5cm
+        \small \textbf{\@coorientador} \\
+        \vskip0.3cm
+        \footnotesize {\@graucoorientador} do \\
+        \footnotesize \@depcoorientador \\
+        \footnotesize \@instcoorientador \\
+
+        \ifacomp@nhante
+            \vskip5.0cm
+            \emph{Acompanhamento do trabalho :} \\
+            \vskip1.5cm
+            \textbf{\@acompanhante} \\
+            \vskip0.3cm
+            \footnotesize {\@grauacompanhante}  do \\
+            \footnotesize \@depacompanhante \\
+            \footnotesize \@instacompanhante \\
+        \fi
+        \end{small}
+    \end{center}
+
+    \cleardoublepage
+
+    \ifdedic@tion
+        \begin{flushright}
+            \Large\em\null\vskip5cm
+            \dedication@text
+            \vfill
+        \end{flushright}
+    \fi
+
+    \cleardoublepage
+
+    \iffront@pages
+        \signaturepage
+    \fi
+    }
+
+
+%-----------------------------------------------------------------------------------------------
+% Definições para os Membros do Júri
+%-----------------------------------------------------------------------------------------------
+\def\signature#1#2#3{\parbox[t]{0.5cm}{\smash{#1}}
+\hfill \parbox[t]{11.5cm}{\textbf{#2},\\[-10mm]
+\begin{flushleft}\small{#3} \end{flushleft}}}
+
+
+%-----------------------------------------------------------------------------------------------
+% Definições da Folha de Júri
+%-----------------------------------------------------------------------------------------------
+\def\signaturepage{
+    \begin{center}
+            UNIVERSIDADE DE TRÁS-OS-MONTES E ALTO DOURO\\
+            Mestrado em Engenharia Electrotécnica e de Computadores
+   \end{center}
+%    \vskip 0.25in plus 0.4in minus 0.1in
+    \vskip 0.25in
+    \hyphenpenalty=10000
+    \begin{sloppypar}
+            Os membros do Júri recomendam à \no@breaks{\@university}
+            a aceitação do relatório de estágio intitulado
+            \linebreak[3] ``{\bf\no@breaks{\@title}}''
+            \linebreak[3] realizada por \mbox{\bf\@author} para satisfação parcial
+            dos requisitos do grau de
+        \linebreak[2] \mbox{\bf\@degree}.
+    \end{sloppypar}
+
+    \begin{center}
+            \@submitdate
+    \end{center}
+
+%    \def\sigskip{\vskip0.4in plus 0.1in}
+%    \def\beginskip{\vskip0.5875in plus 0.1in}
+    \def\sigskip{\vskip0.25in}
+    \def\beginskip{\vskip0.5in}
+
+    \beginskip
+    \signature{Presidente:}{\@presidentejuri}{\@designacaopresidente} \\
+    \sigskip \signature{Vogais do Júri:}{\@arguenteexterno}{\@designacaoarguente} \\
+    \sigskip \signature{}{\@orientador}{\@grauorientador\ do \@deporientador\ da \@instorientador} \\
+    \ifco@orientador
+         \sigskip \signature{}{\@coorientador}{\@graucoorientador\ do \@depcoorientador\ da \@instcoorientador} \\
+    \fi
+    \cleardoublepage
+    }
+
+%-----------------------------------------------------------------------------------------------
+% Definições da Folha de Capítulo
+%-----------------------------------------------------------------------------------------------
+\def\nonumchapter#1{%
+    \chapter*{#1}
+    \addcontentsline{toc}{chapter}{#1}}
+
+\def\prefacesection#1{%
+    \chapter*{#1}
+    \addcontentsline{toc}{chapter}{#1}}
+
+\DeclareFixedFont{\chapterfont}{T1}{phv}{bx}{n}{3cm}    % Distancia do Rule ao Topo da Caixa
+
+\newcommand{\chapterformat}[1]{%
+    \put(30,5){\parbox[b]{300pt}{\Huge\sffamily\filright#1}}}
+
+\titlespacing{\chapter}{0pt}{0pt}{80mm}     % Deslocamento Vertical do texto
+
+\titleformat{\chapter}[block]
+    {\begin{picture}(0,60)}             % Deslocamento Vertical do Cabeçalho
+    {\put(2,5){%
+        %\colorbox[named]{BrickRed}{%
+        %\mbox{%
+        %    \rule[-2mm]{0mm}{26mm}
+        %    \chapterfont\textcolor[named]{White}{\thechapter}}}
+        %\normalcolor}
+        % Alterado por Antonio Valente em 02/2018
+        \begin{tcolorbox}[width=2.5cm,
+				colback=BrickRed,
+				colframe=BrickRed,
+				halign=center,valign=center,
+				square]
+				\chapterfont\textcolor[named]{White}{\thechapter}
+				\end{tcolorbox}
+        }}
+    {0pt}
+    {\chapterformat}
+    [\end{picture}
+    \hrulefill
+    \rule{30mm}{2mm}
+    ]
+
+\def\afterpreface{\newpage
+    \pagenumbering{arabic}
+    \typeout{UATDthesis preface pages completed.}
+    \properpagestyle}
+
+% Redefine \thebibliography to go to a new page and put an entry in the
+% table of contents
+\let\@ldthebibliography\thebibliography
+\renewcommand{\thebibliography}[1]{%
+    \newpage
+    \addcontentsline{toc}{chapter}{Refer\^encias bibliogr\'aficas}
+    \@ldthebibliography{#1}
+}
+
+\let\@ldbibliography\bibliography
+\renewcommand{\bibliography}[1]{\ifprint@bib\@ldbibliography{#1}\fi}
+
+% Start out normal
+\properpagestyle
+
+
+
+
+
+% -------------------------------------------------------------------
+% Include Table of Contents in the Table of Contents
+% Change spacing
+% Modified by Alex, October 1994
+% Bug Fix: TOC Page number when TOC spans over one page (November, 1999)
+\newlength{\tclineskip}
+\setlength{\tclineskip}{\baselineskip}
+\def\@addcontentsline#1#2#3{\if@filesw \begingroup
+\let\label\@gobble \let\index\@gobble \let\glossary\@gobble
+\def\protect##1{\string\string\string##1\string\space
+   \space}\@temptokena{\thepage}%
+\edef\@tempa{\immediate\write
+\@auxout{\string\@writefile{#1}{\protect
+     \contentsline{#2}{#3}{\the\@temptokena}}}}\@tempa
+   \if@nobreak \ifvmode\nobreak\fi\fi\endgroup\fi}
+\def\tableofcontents{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
+ \fi\chapter*{\contentsname\@mkboth{\contentsname}{\contentsname}}
+  \newlength{\@defbaselineskip}
+  \setlength{\@defbaselineskip}{\baselineskip}
+  \setlength{\baselineskip}{\tclineskip}
+%  \addcontentsline{toc}{chapter}{Índice}
+  \@starttoc{toc}
+  \setlength{\baselineskip}{\@defbaselineskip}
+  \if@restonecol\twocolumn\fi
+  \relax}
+% -------------------------------------------------------------------
