@@ -1,9 +1,11 @@
 # **Relatório de estágio**
 ## Pipeline de testes automatizados para integração e entrega contínua de software B2B em desenvolvimento Agile
 
-![!.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Sever-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white)![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white)![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white)![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)![Raspberry Pi](https://img.shields.io/badge/-RaspberryPi-C51A4A?style=for-the-badge&logo=Raspberry-Pi)![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)![GitLab](https://img.shields.io/badge/gitlab-%23181717.svg?style=for-the-badge&logo=gitlab&logoColor=white)
+![Jenkins](https://img.shields.io/badge/jenkins-%232C5263.svg)![!.Net](https://img.shields.io/badge/.NET-5C2D91)![GitLab](https://img.shields.io/badge/gitlab-%23181717.svg)![Docker](https://img.shields.io/badge/docker-%230db7ed.svg)![Windows](https://img.shields.io/badge/Windows-0078D6)![C#](https://img.shields.io/badge/c%23-%23239120.svg)![PowerShell](https://img.shields.io/badge/PowerShell-%235391FE.svg)![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Sever-CC2927)![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure&logo=swagger&logoColor=white)![Nginx](https://img.shields.io/badge/nginx-%23009639.svg)![Debian Linux](https://img.shields.io/badge/Debian-D70A53)![Raspberry Pi](https://img.shields.io/badge/-RaspberryPi-C51A4A)![Slack](https://img.shields.io/badge/Slack-4A154B)![Postman](https://img.shields.io/badge/Postman-FF6C37)![Stack Overflow](https://img.shields.io/badge/-Stackoverflow-FE7A16)![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91.svg)![Microsoft Visio ](https://img.shields.io/badge/Microsoft_Visio-3955A3)
 
 ## Palavras-chave
+
+- _Quality assurance_, _Continuous integration_, _Continuous delivery_, _DevOps_, _Project Management_, _Agile_
 
 ## Temas abordados
 
@@ -16,13 +18,13 @@
 - _Análise estática_
 - _Repositório de artefactos_
 
-## Projetos de código fonte aberto utilizados (OSS)
+## Projetos Open Source utilizados (OSS)
 
 Ao longo do trabalho foram usadas as seguintes tecnologias:
 
 - [Jenkins] - Servidor de automação 
-- [.NET] - awesome web-based text editor
-- [Linux] - Markdown parser done right. Fast and easy to extend.
+- [.NET] - Eco-sistema de desenvolvimento de software
+- [Debian] - Sistema operativo baseado no Kernel Linux
 
 **Free Software, Hell Yeah!**
 
@@ -30,4 +32,4 @@ Ao longo do trabalho foram usadas as seguintes tecnologias:
 
    [Jenkins]: <https://www.jenkins.io/>
    [.NET]: <https://dotnet.microsoft.com/en-us/>
-   [Linux]: <https://www.linux.org/>
+   [Debian]: <https://www.debian.org/>
