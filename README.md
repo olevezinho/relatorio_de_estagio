@@ -24,7 +24,7 @@ Ao longo do trabalho foram usadas as seguintes tecnologias:
 
 - [Jenkins] - Servidor de automação 
 - [.NET] - Eco-sistema de desenvolvimento de software
-- [Debian] - Sistema operativo baseado no Kernel Linux
+- [Raspbian] - Sistema operativo baseado em Debian
 
 **Free Software, Hell Yeah!**
 
@@ -32,4 +32,4 @@ Ao longo do trabalho foram usadas as seguintes tecnologias:
 
    [Jenkins]: <https://www.jenkins.io/>
    [.NET]: <https://dotnet.microsoft.com/en-us/>
-   [Debian]: <https://www.debian.org/>
+   [Raspbian]: <https://www.raspberrypi.com/software/operating-systems/>
